@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TikTok Tool LK</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@600&display=swap');
+body{margin:0;background:#070a14;color:#fff;font-family:Inter;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:15px}
+.card{width:100%;max-width:420px;background:#12152b;border:1px solid #7cf8ff;border-radius:22px;padding:22px;box-shadow:0 0 30px #7c5cff50;text-align:center}
+h1{font-family:Orbitron;font-size:22px;margin:10px 0} .c1{color:#7cf8ff} .c2{color:#d68cff}
+input{width:100%;padding:13px;border-radius:12px;border:1px solid #7cf8ff;background:#ffffff10;color:white;outline:none;margin:14px 0}
+.btn{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(90deg,#6a5af9,#8b5cf6);color:white;font-weight:700;cursor:pointer}
+.result{margin-top:15px;background:#ffffff08;border-radius:14px;padding:12px;display:none}
+video{width:100%;border-radius:12px;margin-top:10px}
+.small{font-size:11px;color:#8a90a8;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1><span class="c1">TikTok</span> <span class="c2">TOOL LK</span></h1>
+<p style="font-size:13px;color:#b8c0d0">Link eka danna</p>
+<input id="url" placeholder="https://www.tiktok.com/@.../video/...">
+<button class="btn" onclick="getInfo()">✨ Get Video</button>
+
+<div id="res" class="result">
+<p id="title" style="font-size:13px"></p>
+<video id="vid" controls></video>
+<a id="dlink" class="btn" style="display:block;margin-top:10px;text-decoration:none" target="_blank">Open Original</a>
+</div>
+
+<div class="small">For personal use only 💜</div>
+</div>
+
+<script>
+async function getInfo(){
+ let u = document.getElementById('url').value.trim();
+ if(!u) return alert("Link eka danna 🥺");
+ document.getElementById('res').style.display='block';
+ document.getElementById('title').innerText = "Loading... ⏳";
+ try{
+   let api = `https://www.tikwm.com/api/?url=${encodeURIComponent(u)}`;
+   let r = await fetch(api);
+   let j = await r.json();
+   if(j.data){
+     document.getElementById('title').innerText = j.data.title || "Video Ready!";
+     document.getElementById('vid').src = j.data.play;
+     document.getElementById('dlink').href = j.data.play;
+     document.getElementById('dlink').innerText = "💾 Save Video";
+   } else {
+     document.getElementById('title').innerText = "Error - Link eka public da kiyala balanna";
+   }
+ }catch(e){
+   document.getElementById('title').innerText = "API busy";
+   window.open(u,'_blank');
+ }
+}
+</script>
+</body>
+</html>
