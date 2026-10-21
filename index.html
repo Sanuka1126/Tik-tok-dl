@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TikTok PRO - Gojo</title>
+<title>TikTok Video Downloader Pro</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -23,8 +23,8 @@ video{width:100%;border-radius:12px;margin-top:10px;background:#000}
 <body>
 <div class="card">
 <h1><span class="c1">TIKTOK</span> <span class="c2">PRO</span></h1>
-<div class="sub">Gojo Edition ♾️ One-Tap Direct Download</div>
-<input id="url" placeholder="TikTok link eka danna...">
+<div class="sub">Tik-Tok Video Direct Download⬇️</div>
+<input id="url" placeholder="Paste Your link here😊🌸">
 <button class="btn" id="mainBtn" onclick="getVideo()">⚡ GET VIDEO</button>
 <div id="status">⬇️ Downloading... Check notification bar!</div>
 <div id="res" class="result">
@@ -41,7 +41,7 @@ let current = {hd:'', sd:'', mp3:''};
 
 async function getVideo(){
  let u = document.getElementById('url').value.trim();
- if(!u) return alert("Link danna bn");
+ if(!u) return alert("Please paste your link");
  let btn = document.getElementById('mainBtn');
  btn.innerText="⏳ Loading..."; 
  document.getElementById('res').style.display='block';
@@ -66,7 +66,7 @@ async function directDL(url, name){
  if(!url) return;
  let st = document.getElementById('status');
  st.style.display='block';
- st.innerText = "⬇️ Downloading... Notification bar eke balanna!";
+ st.innerText = "⬇️ Downloading...🤭💞";
  try{
    let res = await fetch(url);
    let blob = await res.blob();
@@ -76,7 +76,7 @@ async function directDL(url, name){
    document.body.appendChild(a);
    a.click();
    a.remove();
-   st.innerText = "✅ Downloaded! Gallery eke balanna!";
+   st.innerText = "Download Completed...✅";
    setTimeout(()=> st.style.display='none', 3000);
  }catch(e){
    // Fallback - if CORS block, open new method
