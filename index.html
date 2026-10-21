@@ -3,96 +3,91 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TikTok PRO - Gojo</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0; min-height:100vh; font-family:Inter; color:#fff; display:flex; justify-content:center; align-items:center; padding:15px;
-  background: url('gojo.jpg') center/cover no-repeat fixed;
-}
-body::before{
-  content:''; position:fixed; inset:0; background:rgba(7,10,20,0.78); backdrop-filter:blur(4px); z-index:-1;
-}
-.card{
-  width:100%; max-width:440px; background:rgba(18,21,43,0.88); border:1px solid #7cf8ff;
-  border-radius:24px; padding:24px; box-shadow:0 0 40px #7c5cff60, inset 0 0 20px #ffffff0a; text-align:center;
-}
-h1{font-family:Orbitron; font-size:26px; margin:0; letter-spacing:1px}
-.c1{color:#7cf8ff; text-shadow:0 0 10px #7cf8ff} .c2{color:#d68cff; text-shadow:0 0 10px #d68cff}
-.sub{font-size:12px; color:#b8c0d0; margin:8px 0 16px}
-input{width:100%; padding:14px; border-radius:14px; border:1px solid #7cf8ff; background:#ffffff12; color:white; outline:none}
-.btn{
-  width:100%; padding:14px; border:none; border-radius:14px; 
-  background:linear-gradient(90deg,#6a5af9,#8b5cf6); color:white; font-weight:800; cursor:pointer; margin-top:14px;
-  box-shadow:0 4px 15px #6a5af980; transition:0.2s;
-}
-.btn:active{transform:scale(0.97)}
-.result{margin-top:18px; background:#ffffff0d; border:1px solid #ffffff15; border-radius:16px; padding:14px; display:none; text-align:left}
-video{width:100%; border-radius:12px; margin-top:10px; background:#000}
-.q-btn{display:block; width:100%; padding:11px; margin-top:8px; border-radius:10px; border:1px solid #ffffff20; background:#ffffff10; color:white; text-decoration:none; text-align:center; font-size:13px; font-weight:700}
-.q-btn.hd{background:linear-gradient(90deg,#00e5ff,#7c4dff); border:none}
-.q-btn.mp3{background:#ffffff08}
-.tag{font-size:11px; color:#7cf8ff; background:#7cf8ff20; padding:3px 8px; border-radius:20px}
+body{margin:0;min-height:100vh;font-family:Inter;color:#fff;display:flex;justify-content:center;align-items:center;padding:15px;background:url('gojo.jpg') center/cover no-repeat fixed}
+body::before{content:'';position:fixed;inset:0;background:rgba(7,10,20,0.8);backdrop-filter:blur(5px);z-index:-1}
+.card{width:100%;max-width:440px;background:rgba(18,21,43,0.9);border:1px solid #7cf8ff;border-radius:24px;padding:22px;box-shadow:0 0 40px #7c5cff60;text-align:center}
+h1{font-family:Orbitron;font-size:26px;margin:0} .c1{color:#7cf8ff} .c2{color:#d68cff}
+.sub{font-size:11px;color:#b8c0d0;margin:6px 0 14px}
+input{width:100%;padding:14px;border-radius:14px;border:1px solid #7cf8ff;background:#ffffff12;color:white;outline:none}
+.btn{width:100%;padding:14px;border:none;border-radius:14px;background:linear-gradient(90deg,#6a5af9,#8b5cf6);color:white;font-weight:800;cursor:pointer;margin-top:14px}
+.result{margin-top:16px;background:#ffffff0d;border-radius:16px;padding:12px;display:none;text-align:left}
+video{width:100%;border-radius:12px;margin-top:10px;background:#000}
+.q-btn{display:block;width:100%;padding:12px;margin-top:8px;border-radius:12px;border:none;color:white;text-decoration:none;text-align:center;font-size:13px;font-weight:700;cursor:pointer}
+.q-btn.hd{background:linear-gradient(90deg,#00e5ff,#7c4dff)} .q-btn.sd{background:#ffffff14} .q-btn.mp3{background:#ffffff08}
+#status{font-size:12px;color:#7cf8ff;text-align:center;margin-top:8px;display:none}
 </style>
 </head>
 <body>
 <div class="card">
 <h1><span class="c1">TIKTOK</span> <span class="c2">PRO</span></h1>
-<div class="sub">Infinity Edition ⊙ Gojo Theme - One Click Download</div>
-<input id="url" placeholder="Paste TikTok link here...">
-<button class="btn" id="mainBtn" onclick="getVideo()">⚡ GET & DOWNLOAD</button>
-
+<div class="sub">Gojo Edition ♾️ One-Tap Direct Download</div>
+<input id="url" placeholder="TikTok link eka danna...">
+<button class="btn" id="mainBtn" onclick="getVideo()">⚡ GET VIDEO</button>
+<div id="status">⬇️ Downloading... Check notification bar!</div>
 <div id="res" class="result">
-<div style="display:flex; justify-content:space-between; align-items:center">
-<span id="title" style="font-size:12px; flex:1"></span><span class="tag">READY</span>
-</div>
+<span id="title" style="font-size:12px"></span>
 <video id="vid" controls playsinline></video>
-<a id="btnHD" class="q-btn hd" target="_blank">💎 Download HD [No Watermark] - One Click</a>
-<a id="btnSD" class="q-btn" target="_blank">🎬 SD [With Watermark]</a>
-<a id="btnMP3" class="q-btn mp3" target="_blank">🎵 Download MP3 Audio</a>
+<button id="btnHD" class="q-btn hd">💎 DIRECT DOWNLOAD HD [No Watermark]</button>
+<button id="btnSD" class="q-btn sd">🎬 Download SD</button>
+<button id="btnMP3" class="q-btn mp3">🎵 Download MP3</button>
 </div>
-
-<div style="font-size:10px; color:#7a8198; margin-top:16px">Satoru Gojo • Hollow Purple • For personal use</div>
 </div>
 
 <script>
+let current = {hd:'', sd:'', mp3:''};
+
 async function getVideo(){
  let u = document.getElementById('url').value.trim();
- if(!u){ alert("Link එක දාන්න🤭"); return; }
+ if(!u) return alert("Link danna bn");
  let btn = document.getElementById('mainBtn');
- btn.innerText = "⏳ Fetching..."; btn.disabled = true;
+ btn.innerText="⏳ Loading..."; 
  document.getElementById('res').style.display='block';
- document.getElementById('title').innerText = "Connecting to TikTok...";
  try{
-   let api = `https://www.tikwm.com/api/?url=${encodeURIComponent(u)}`;
-   let r = await fetch(api);
+   let r = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(u)}`);
    let j = await r.json();
-   if(j.data && j.data.play){
-     document.getElementById('title').innerText = (j.data.title || "Video Ready").substring(0,80);
+   if(j.data){
+     document.getElementById('title').innerText = j.data.title || "Ready!";
      document.getElementById('vid').src = j.data.play;
-     
-     // Quality Links
-     let hd = j.data.hdplay || j.data.play;
-     let sd = j.data.wmplay || j.data.play;
-     let mp3 = j.data.music || j.data.play;
-
-     document.getElementById('btnHD').href = hd;
-     document.getElementById('btnSD').href = sd;
-     document.getElementById('btnMP3').href = mp3;
-
-     btn.innerText = "✅ Ready! Click HD to Save";
-     // AUTO DOWNLOAD - One Click eka!
-     window.open(hd, '_blank'); // Parama click karapu gaman DL wenawa
-   } else {
-     document.getElementById('title').innerText = "Error - Public video එකක් දාන්න🥺";
-     btn.innerText = "⚡ GET & DOWNLOAD";
+     current.hd = j.data.hdplay || j.data.play;
+     current.sd = j.data.wmplay || j.data.play;
+     current.mp3 = j.data.music || "";
+     btn.innerText="✅ Video Ready!";
+     // AUTO DIRECT DOWNLOAD!
+     directDL(current.hd, "TikTok-HD.mp4");
    }
- }catch(e){
-   document.getElementById('title').innerText = "API Busy - Try Again";
-   btn.innerText = "⚡ GET & DOWNLOAD";
- }
- btn.disabled = false;
+ }catch(e){ alert("API busy - try again"); btn.innerText="⚡ GET VIDEO"; }
 }
+
+// DIRECT DOWNLOAD FUNCTION - Udin notification eka enna!
+async function directDL(url, name){
+ if(!url) return;
+ let st = document.getElementById('status');
+ st.style.display='block';
+ st.innerText = "⬇️ Downloading... Notification bar eke balanna!";
+ try{
+   let res = await fetch(url);
+   let blob = await res.blob();
+   let a = document.createElement('a');
+   a.href = URL.createObjectURL(blob);
+   a.download = name;
+   document.body.appendChild(a);
+   a.click();
+   a.remove();
+   st.innerText = "✅ Downloaded! Gallery eke balanna!";
+   setTimeout(()=> st.style.display='none', 3000);
+ }catch(e){
+   // Fallback - if CORS block, open new method
+   let a = document.createElement('a');
+   a.href = url; a.download = name; a.target="_blank"; a.click();
+ }
+}
+
+document.getElementById('btnHD').onclick = ()=> directDL(current.hd, "TikTok-HD-NoWatermark.mp4");
+document.getElementById('btnSD').onclick = ()=> directDL(current.sd, "TikTok-SD.mp4");
+document.getElementById('btnMP3').onclick = ()=> directDL(current.mp3, "TikTok-Audio.mp3");
 </script>
 </body>
- </html>
+  </html>
